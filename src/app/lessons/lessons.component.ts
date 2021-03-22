@@ -14,6 +14,7 @@ import {catchError} from 'rxjs/operators';
 export class LessonsComponent implements OnInit {
   lessons$: Observable<Lesson[]>;
   isLoggedIn$: Observable<boolean>;
+  sub: PushSubscription;
 
   readonly VAPID_PUBLIC_KEY = 'BHeD-NBOy8n7QXqjp2p2yCZSGje7bj4vLDDZQaWo3mn2LGW0g7VeAprcBuJInQdu8IetufgIcCywlt73OnnJEwg';
 
@@ -37,6 +38,7 @@ export class LessonsComponent implements OnInit {
         serverPublicKey: this.VAPID_PUBLIC_KEY
       })
         .then(sub => {
+          this.sub = sub;
           console.log('Notification Subscription: ', sub);
           this.newsletterService.addPushSubscriber(sub).subscribe(
             () => console.log('Sent push subscription object to server.'),
@@ -48,5 +50,7 @@ export class LessonsComponent implements OnInit {
   }
 
   sendNewsletter() {
+    console.log('Sending Newsletter to all subscribers...');
+    this.newsletterService.send().subscribe();
   }
 }
