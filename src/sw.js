@@ -1,4 +1,4 @@
-const VERSION = 'v4';
+const VERSION = 'v5';
 
 log('Installing Service Worker');
 
@@ -7,6 +7,13 @@ self.addEventListener('install', event => event.waitUntil(installServiceWorker()
 self.addEventListener('activate', () => {
   log('version is activated');
 });
+
+self.addEventListener('fetch', event => event.respondWith(showOfflineIfError(event)));
+
+async function showOfflineIfError(event) {
+  log('Calling network: ' + event.request.url);
+  return fetch(event.request);
+}
 
 async function installServiceWorker() {
   log("Service Worker installation started ");
