@@ -18,7 +18,10 @@
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/manifest.json",
+              "src/sw-register.js",
+              "src/sw.js"
             ],
             "styles": [
               "src/styles.css"
@@ -75,7 +78,10 @@
             ],
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/manifest.json",
+              "src/sw-register.js",
+              "src/sw.js"
             ]
           }
         },
