@@ -21,7 +21,8 @@
               "src/favicon.ico",
               "src/manifest.json",
               "src/sw-register.js",
-              "src/sw.js"
+              "src/sw.js",
+              "src/offline.html"
             ],
             "styles": [
               "src/styles.css"
@@ -81,7 +82,8 @@
               "src/favicon.ico",
               "src/manifest.json",
               "src/sw-register.js",
-              "src/sw.js"
+              "src/sw.js",
+              "src/offline.html"
             ]
           }
         },
