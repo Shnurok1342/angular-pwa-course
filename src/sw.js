@@ -1,4 +1,4 @@
-const VERSION = 'v5';
+const VERSION = 'v6';
 
 log('Installing Service Worker');
 
@@ -11,8 +11,16 @@ self.addEventListener('activate', () => {
 self.addEventListener('fetch', event => event.respondWith(showOfflineIfError(event)));
 
 async function showOfflineIfError(event) {
-  log('Calling network: ' + event.request.url);
-  return fetch(event.request);
+  let response;
+  try {
+    log('Calling network: ' + event.request.url);
+    response = await fetch(event.request);
+  } catch (err) {
+    log('Network request Failed. Serving offline page', err);
+    const cache = await caches.open('app-cache');
+    response = cache.match('offline.html');
+  }
+  return response;
 }
 
 async function installServiceWorker() {
