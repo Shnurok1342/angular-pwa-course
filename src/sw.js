@@ -1,4 +1,4 @@
-const VERSION = 'v3';
+const VERSION = 'v4';
 
 log('Installing Service Worker');
 
@@ -16,6 +16,9 @@ async function installServiceWorker() {
   if (response.status !== 200) {
     throw new Error('Could not load offline page!');
   }
+  const cache = await caches.open('app-cache');
+  cache.put(request, response);
+  log("Cached offline.html");
 }
 
 function log(message, ...data) {
