@@ -1,25 +1,17 @@
-
-
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-
-
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class NewsletterService {
+  constructor(private http: HttpClient) {}
 
-    constructor(private http: HttpClient) {
+  addPushSubscriber(sub: any) {
+    return this.http.post('/api/notifications', sub);
+  }
 
-    }
+  send() {
 
-    addPushSubscriber(sub:any) {
-
-    }
-
-    send() {
-
-    }
-
+  }
 }
 
 

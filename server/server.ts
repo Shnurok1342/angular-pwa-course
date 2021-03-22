@@ -1,17 +1,17 @@
 
 import * as express from 'express';
-import {Application} from "express";
-import {readAllLessons} from "./read-all-lessons.route";
-import {addPushSubscriber} from "./add-push-subscriber.route";
-import {sendNewsletter} from "./send-newsletter.route";
-const bodyParser = require('body-parser');
+import {Application} from 'express';
+import {readAllLessons} from './read-all-lessons.route';
+import {addPushSubscriber} from './add-push-subscriber.route';
+import {sendNewsletter} from './send-newsletter.route';
 
+const bodyParser = require('body-parser');
 const webpush = require('web-push');
 
 
 const vapidKeys = {
-    publicKey: "TODO",
-    privateKey: "TODO"
+    publicKey: 'BHeD-NBOy8n7QXqjp2p2yCZSGje7bj4vLDDZQaWo3mn2LGW0g7VeAprcBuJInQdu8IetufgIcCywlt73OnnJEwg',
+    privateKey: 'fLTbEhki6T5NmR1oxnaNcN6N_eAcWzQ8fd02FAqmxKg'
 };
 
 /*
@@ -46,8 +46,8 @@ app.route('/api/newsletter')
 
 
 // launch an HTTP Server
-const httpServer:any = app.listen(9000, () => {
-    console.log("HTTP Server running at http://localhost:" + httpServer.address().port);
+const httpServer: any = app.listen(9000, () => {
+    console.log('HTTP Server running at http://localhost:' + httpServer.address().port);
 });
 
 
